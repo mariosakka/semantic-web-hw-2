@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Home')}"></head>
+<body class="page-body">
+<aside th:replace="~{fragments/sidebar :: sidebar}"></aside>
+<main class="main">
+    <h1 class="page-title mb-2">Semantic Book Recommendation System</h1>
+    <p class="muted mb-6">Semantic Web Big HW 2 - Mirghani Abdelrahman, Sakka Mohamad-Mario</p>
+    <p class="hint mb-10">Use the sidebar to navigate between pages.</p>
+
+    <div class="card-green mb-4">
+        <h2 class="card-title-green">RDF Data</h2>
+        <p class="card-body-green">Upload RDF files, render graph visualizations, and browse the local book database.</p>
+        <ul class="list-disc pl-5 space-y-2">
+            <li><a class="link" th:href="@{/rdf/upload}">Upload RDF file and visualize graph</a></li>
+            <li><a class="link" th:href="@{/books}">View books list from RDF data</a></li>
+            <li><a class="link" th:href="@{/books/add}">Add a new book</a></li>
+        </ul>
+    </div>
+</main>
+<div th:replace="~{fragments/chat-widget :: chatWidget(${chatStarters}, ${chatRedirectPath}, ${chatBookId})}"></div>
+</body>
+</html>

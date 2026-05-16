@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(pageTitle)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle}">Semantic Web Book RAG</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+        @layer components {
+            .page-body { @apply flex min-h-screen bg-gray-100 text-gray-900; }
+            .main { @apply flex-1 p-8; }
+
+            .sidebar { @apply w-56 bg-gray-900 text-white flex flex-col flex-shrink-0 min-h-screen; }
+            .sidebar-header { @apply px-5 py-5 text-sm font-bold tracking-wide border-b border-gray-700; }
+            .sidebar-nav { @apply flex-1 px-3 py-4 space-y-1 text-sm; }
+            .sidebar-footer { @apply px-5 py-4 text-xs text-gray-500 border-t border-gray-700; }
+            .nav-link { @apply block px-3 py-2 rounded text-gray-300 hover:bg-gray-700 hover:text-white; }
+
+            .page-title { @apply text-xl font-bold; }
+            .section-title { @apply text-base font-semibold text-gray-800 mb-3; }
+            .muted { @apply text-sm text-gray-500; }
+            .hint { @apply text-sm text-gray-600; }
+            .link { @apply text-blue-600 hover:underline; }
+            .back-link { @apply text-blue-600 hover:underline text-sm mb-6 inline-block; }
+            .error-msg { @apply text-red-600 text-sm mb-4; }
+
+            .label { @apply block text-sm font-medium text-gray-700 mb-1; }
+            .inline-label { @apply text-sm font-medium text-gray-700; }
+            .input { @apply border border-gray-300 rounded px-3 py-2 text-sm; }
+            .select { @apply border border-gray-300 rounded px-3 py-2 text-sm bg-white; }
+            .form { @apply space-y-4; }
+            .inline-form { @apply flex items-center gap-3; }
+            .btn { @apply px-4 py-2 bg-gray-800 text-white text-sm rounded hover:bg-gray-700; }
+            .btn-red { @apply px-4 py-2 bg-red-600 text-white text-sm rounded hover:bg-red-700; }
+            .btn-green { @apply px-4 py-2 bg-green-600 text-white text-sm rounded hover:bg-green-700; }
+
+            .tbl { @apply w-full text-sm border-collapse; }
+            .thead-row { @apply bg-gray-800 text-white text-left; }
+            .th { @apply px-4 py-2 border border-gray-300; }
+            .td { @apply px-4 py-2 border border-gray-200; }
+
+            .card { @apply bg-white rounded border border-gray-200 p-6; }
+            .card-green { @apply border border-green-200 rounded p-5 bg-green-50 w-80; }
+            .card-red { @apply border border-red-200 rounded p-5 bg-red-50 w-80; }
+            .card-title-green { @apply text-sm font-semibold text-green-700 mb-1; }
+            .card-body-green { @apply text-xs text-green-600 mb-4; }
+            .card-title-red { @apply text-sm font-semibold text-red-700 mb-1; }
+            .card-body-red { @apply text-xs text-red-600 mb-4; }
+
+            .detail-list { @apply divide-y divide-gray-100 text-sm; }
+            .detail-row { @apply flex justify-between py-2; }
+            .detail-key { @apply font-medium text-gray-500; }
+
+            .chat-panel { @apply fixed bottom-5 right-5 w-96 bg-white rounded border border-gray-200 p-4 shadow-lg; }
+        }
+    </style>
+</head>
+</html>

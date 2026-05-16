@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Books')}"></head>
+<body class="page-body">
+<aside th:replace="~{fragments/sidebar :: sidebar}"></aside>
+<main class="main">
+    <h1 class="page-title mb-1">All Books</h1>
+    <p class="muted mb-5">Total: <span th:text="${books.size()}">0</span></p>
+
+    <div th:if="${error}" class="error-msg" th:text="${error}">Error</div>
+    <div th:if="${message}" class="hint" th:text="${message}">Message</div>
+
+    <table class="tbl">
+        <thead>
+        <tr class="thead-row">
+            <th class="th">ID</th>
+            <th class="th">Title</th>
+            <th class="th">Author</th>
+            <th class="th">Themes</th>
+            <th class="th">Reading Level</th>
+            <th class="th">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="book, stat : ${books}" th:class="${stat.even} ? 'bg-gray-50' : ''">
+                <td class="td">
+                    <a class="link" th:href="@{'/books/' + ${book.id}}" th:text="${book.id}">id</a>
+                </td>
+                <td class="td" th:text="${book.title}">Title</td>
+                <td class="td" th:text="${book.author}">Author</td>
+                <td class="td" th:text="${#strings.listJoin(book.themes, ', ')}">Themes</td>
+                <td class="td" th:text="${book.readingLevel}">Reading level</td>
+                <td class="td"><a class="link" th:href="@{'/books/' + ${book.id} + '/edit'}">Edit</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <p class="mt-4"><a class="link" th:href="@{/books/add}">Add a book</a></p>
+</main>
+<div th:replace="~{fragments/chat-widget :: chatWidget(${chatStarters}, ${chatRedirectPath}, ${chatBookId})}"></div>
+</body>
+</html>

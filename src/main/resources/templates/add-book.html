@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Add Book')}"></head>
+<body class="page-body">
+<aside th:replace="~{fragments/sidebar :: sidebar}"></aside>
+<main class="main">
+    <a class="back-link" th:href="@{/books}">Back to Books</a>
+    <h1 class="page-title mb-6">Add a Book</h1>
+
+    <div th:if="${error}" class="error-msg" th:text="${error}">Error</div>
+
+    <form class="form" th:action="@{/books/add}" method="post">
+        <div>
+            <label class="label" for="title">Title</label>
+            <input class="input w-80" id="title" name="title" required>
+        </div>
+
+        <div>
+            <label class="label" for="author">Author</label>
+            <input class="input w-80" id="author" name="author" required>
+        </div>
+
+        <div>
+            <label class="label" for="themes">Themes</label>
+            <input class="input w-80" id="themes" name="themes" placeholder="Science Fiction, Mystery" required>
+        </div>
+
+        <div>
+            <label class="label" for="readingLevel">Reading Level</label>
+            <select class="select w-80" id="readingLevel" name="readingLevel" required>
+                <option th:each="level : ${readingLevels}" th:value="${level}" th:text="${level}">Level</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn mt-4">Save Book</button>
+    </form>
+</main>
+<div th:replace="~{fragments/chat-widget :: chatWidget(${chatStarters}, ${chatRedirectPath}, ${chatBookId})}"></div>
+</body>
+</html>

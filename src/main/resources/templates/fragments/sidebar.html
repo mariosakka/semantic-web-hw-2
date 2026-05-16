@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<aside th:fragment="sidebar" class="sidebar">
+    <div class="sidebar-header">Semantic Web Book RAG</div>
+    <nav class="sidebar-nav">
+        <a class="nav-link" th:href="@{/}">Home</a>
+        <a class="nav-link" th:href="@{/rdf/upload}">RDF Upload</a>
+        <a class="nav-link" th:href="@{/books}">Books</a>
+        <a class="nav-link" th:href="@{/books/add}">Add Book</a>
+    </nav>
+    <div class="sidebar-footer">Semantic Web HW2</div>
+</aside>
+</body>
+</html>
