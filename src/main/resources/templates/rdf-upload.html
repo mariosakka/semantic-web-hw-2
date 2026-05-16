@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('RDF Upload')}"></head>
+<body class="page-body">
+<aside th:replace="~{fragments/sidebar :: sidebar}"></aside>
+<main class="main">
+    <a class="back-link" th:href="@{/}">Back to Home</a>
+    <h1 class="page-title mb-6">Upload RDF</h1>
+
+    <div th:if="${error}" class="error-msg" th:text="${error}">Error</div>
+
+    <form class="form" th:action="@{/rdf/upload}" method="post" enctype="multipart/form-data">
+        <div>
+            <label class="label" for="rdfFile">RDF file</label>
+            <input class="input w-80" id="rdfFile" name="rdfFile" type="file" accept=".rdf,.xml" required>
+        </div>
+        <button type="submit" class="btn mt-4">Upload and Render Graph</button>
+    </form>
+</main>
+<div th:replace="~{fragments/chat-widget :: chatWidget(${chatStarters}, ${chatRedirectPath}, ${chatBookId})}"></div>
+</body>
+</html>
