@@ -1,0 +1,57 @@
+PREFIX ex: <http://example.com/book-recommendation#>
+
+SELECT ?book ?title
+WHERE {
+  ?book a ex:Book ;
+        ex:title ?title .
+}
+ORDER BY ?title
+
+PREFIX ex: <http://example.com/book-recommendation#>
+
+SELECT ?book ?title
+WHERE {
+  ?book a ex:Book ;
+        ex:title ?title ;
+        ex:hasTheme ?theme .
+  ?theme ex:name "Science Fiction" .
+}
+ORDER BY ?title
+
+PREFIX ex: <http://example.com/book-recommendation#>
+
+SELECT ?book ?title
+WHERE {
+  ?book a ex:Book ;
+        ex:title ?title ;
+        ex:hasReadingLevel ?level .
+  ?level ex:name "Beginner" .
+}
+ORDER BY ?title
+
+PREFIX ex: <http://example.com/book-recommendation#>
+
+SELECT ?book ?title
+WHERE {
+  ?book a ex:Book ;
+        ex:title ?title ;
+        ex:hasAuthor ?author .
+  ?author ex:name "Lorian Vey" .
+}
+ORDER BY ?title
+
+PREFIX ex: <http://example.com/book-recommendation#>
+
+SELECT DISTINCT ?book ?title
+WHERE {
+  ?alice a ex:User ;
+         ex:name "Alice" ;
+         ex:hasPreferredTheme ?theme ;
+         ex:hasPreferredReadingLevel ?level .
+
+  ?book a ex:Book ;
+        ex:title ?title ;
+        ex:hasTheme ?theme ;
+        ex:hasReadingLevel ?level .
+}
+ORDER BY ?title
