@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="chatWidget(chatStarters, chatRedirectPath, chatBookId)" class="chat-panel space-y-3">
+    <div class="section-title">Chatbot</div>
+
+    <div class="space-y-2" th:if="${chatStarters != null}">
+        <form th:each="starter : ${chatStarters}" method="post" th:action="@{/chat}">
+            <input type="hidden" name="question" th:value="${starter}">
+            <input type="hidden" name="redirectPath" th:value="${chatRedirectPath}">
+            <input type="hidden" name="bookId" th:value="${chatBookId}">
+            <button type="submit" class="btn w-full" th:text="${starter}">Starter</button>
+        </form>
+    </div>
+
+    <form class="form" method="post" th:action="@{/chat}">
+        <label class="label" for="chatQuestion">Ask a question</label>
+        <input id="chatQuestion" class="input w-full" type="text" name="question" placeholder="Type your question" required>
+        <input type="hidden" name="redirectPath" th:value="${chatRedirectPath}">
+        <input type="hidden" name="bookId" th:value="${chatBookId}">
+        <button type="submit" class="btn">Submit</button>
+    </form>
+
+    <div class="card space-y-2" th:if="${chatAnswer != null}">
+        <div class="text-sm font-semibold">Latest Question</div>
+        <div class="hint" th:text="${chatQuestion}">Question</div>
+        <div class="text-sm font-semibold">Latest Answer</div>
+        <div class="hint whitespace-pre-wrap break-words" th:text="${chatAnswer}">Answer</div>
+    </div>
+</div>
+</body>
+</html>
